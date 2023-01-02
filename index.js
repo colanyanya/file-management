@@ -30,6 +30,15 @@ const upload = multer({
 // 图片后缀
 const picAppendNameSet = new Set(["jpg", "jpeg", "png", "gif", "psd", "raw", "svg"])
 
+// 跨域
+app.all('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods', '*');
+  res.header('Content-Type', 'application/json;charset=utf-8');
+  next();
+});
+
 // 文件上传接口
 app.post('/upload/:path', upload.single('file'), (req, res) => {
   // 文件名
