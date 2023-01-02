@@ -32,8 +32,6 @@ const picAppendNameSet = new Set(["jpg", "jpeg", "png", "gif", "psd", "raw", "sv
 
 // 文件上传接口
 app.post('/upload/:path', upload.single('file'), (req, res) => {
-  console.log(req.file)
-
   // 文件名
   const fileName = req.file.originalname
   // 后缀名
