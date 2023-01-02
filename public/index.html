@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>文件上传</title>
+</head>
+<body>
+
+  <h1>选择上传的文件</h1>
+  <input type="file" name="file" id="file">
+  <input type="button" id="upload" value="上传">
+
+<script>
+  const file = document.querySelector('#file')
+
+  document.querySelector('#upload').addEventListener('click', () => {
+    handleImageUpload()
+  })
+
+  const handleImageUpload = () => {
+    const files = file.files
+    const formData = new FormData()
+    formData.append('file', files[0])
+
+    fetch('http://localhost:4000/upload/images', {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
+    .catch(error => {
+      console.error(error)
+    })
+  }
+
+</script>
+</body>
+</html>
