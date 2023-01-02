@@ -3,3 +3,7 @@ node_modules
 yarn.lock
 
 .idea
+
+public/tmp
+
+public/images
